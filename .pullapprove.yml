@@ -10,6 +10,7 @@ groups:
       approve_regex: '^(Approved|:shipit:|:\+1:|LGTM)'
       reject_regex: '^(Rejected|:-1:)'
     required: 1
-    reset_on_push: false
+    reset_on_push:
+      enabled: true
     users:
     - jiyeonseo
