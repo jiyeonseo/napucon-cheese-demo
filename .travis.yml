@@ -2,3 +2,16 @@ language: java
 
 jdk:
   - oraclejdk8
+
+
+addons:
+  sonarqube: true
+env:
+  global:
+    - secure: "ff1b9e2c0886a7ea54b82844f831dfa425f0d511"
+script:
+  # other script steps might be done before running the actual SonarQube analysis
+  - sonar-scanner -Dsonar.login=$SONAR_TOKEN
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
