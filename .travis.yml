@@ -8,7 +8,7 @@ addons:
   sonarqube: true
 env:
   global:
-    - secure: "ff1b9e2c0886a7ea54b82844f831dfa425f0d511"
+    - secure: "UY0PRnWxAMyFLaYK87Ep8b29Pqz+7PLSVf23MBdiSPnQlZCS/IV1G2Su7J610NfMgMjC3NlwJnytqdluCkOY5/1birzX/RgXOrCfxmYoSM/5pIRSETNJ2YUckWzKgnq7/kfn5z/b73VoTYfd5CTrTCMldEP5yxp4xHCHshmVdy+w2WOmy1sl5J32bTejs1YsZeGBoDqGglYfj9WPFVdNiwP6F79J19SWoGTUJboiyT6uLU0ZN2GWPaHnhmLFWTyKL08ziRCtyfa8kl/X8e5T1LvyZKnbMameVQg/ypKYHnTPe44QvBZdmdKVn5Lxq9sWCAmXIe94KhdKXJVF6ft6PTPIH2r3mh7LItdnF/mbUT5LD8GlcqWbAMuTxydSwyqZnmLidRnu6TvS7w1hxOX7uQSyaFLsv44iBkxDmTPfcoiYH8zEwt1TDNKEKszJMkRatfSGLKVqXoWM3J5Mpu/NBYWKQrshhFw8mbLMaSyAMmeoP78sOVdLGPGIAj9gYS77grJAW4Z0oTRPf68fPkE7KSeY/M8/jQBdvBMVlV4kItsx8nbve1covAO7BeaZRtuEZCS1MrNbA+Q2MtCWfaCCt5/APt+PUJ64Wik4LR3Arhw++NxAYY/aIFDTXpkKcxq8jh8Vumzg6fpCipt/u2w5oZDe4HtlLDcXGA3z+KFmAFs="
 script:
   # other script steps might be done before running the actual SonarQube analysis
   - sonar-scanner -Dsonar.login=$SONAR_TOKEN
