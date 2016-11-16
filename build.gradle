@@ -33,26 +33,27 @@ jacocoTestReport {
 }
 
 task codeCoverageReport(type: JacocoReport) {
+
+    // Gather execution data from all subprojects
+    // (change this if you e.g. want to calculate unit test/integration test coverage separately)
     executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
 
-    subprojects.each {
-        sourceSets it.sourceSets.main
-    }
+    // Add all relevant sourcesets from the subprojects
+
+    sourceSets sourceSets.main
 
     reports {
         xml.enabled true
-        xml.destination "${buildDir}/reports/jacoco/report.xml"
-        html.enabled false
+        html.enabled true
+        html.destination "${buildDir}/reports/jacoco"
         csv.enabled false
     }
 }
 
 // always run the tests before generating the report
 codeCoverageReport.dependsOn {
-    subprojects*.test
+    test
 }
-
-
 
 bootRun {
     systemProperties System.properties
