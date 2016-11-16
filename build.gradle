@@ -12,6 +12,7 @@ buildscript {
 
 apply plugin: 'java'
 apply plugin: 'spring-boot'
+apply plugin: 'jacoco'
 
 jar {
 	baseName = 'napucon-cheese-demo'
@@ -25,6 +26,34 @@ repositories {
 }
 
 
+jacocoTestReport {
+    reports {
+        xml.enabled true
+    }
+}
+
+task codeCoverageReport(type: JacocoReport) {
+    executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
+
+    subprojects.each {
+        sourceSets it.sourceSets.main
+    }
+
+    reports {
+        xml.enabled true
+        xml.destination "${buildDir}/reports/jacoco/report.xml"
+        html.enabled false
+        csv.enabled false
+    }
+}
+
+// always run the tests before generating the report
+codeCoverageReport.dependsOn {
+    subprojects*.test
+}
+
+
+
 bootRun {
     systemProperties System.properties
     addResources = true
@@ -36,3 +65,5 @@ dependencies {
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 
 }
+
+
